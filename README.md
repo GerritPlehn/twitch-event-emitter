@@ -21,7 +21,7 @@ const config = {
 }
 let events = new TEE(config);
 events.init().then(() => {
-  events.fldrmausmann.heist.on('started', ({
+  events.someChannelName.heist.on('started', ({
     someNumber
   }) => {
     console.log(someNumber);
