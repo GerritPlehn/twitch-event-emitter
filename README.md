@@ -20,7 +20,11 @@ const config = {
   }]
 }
 let events = new TEE(config);
-events.someChannelName.heist.on('started', {someNumber} => {
-  console.log(`a heist with ${someNumber} people was started`);
-});
+events.init().then(() => {
+  events.fldrmausmann.heist.on('started', ({
+    someNumber
+  }) => {
+    console.log(someNumber);
+  })
+})
 ```
