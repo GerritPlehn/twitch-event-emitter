@@ -17,8 +17,8 @@ class TwitchEventEmitter {
       userName: channel.user
     };
     this[`${channel.name}`].commands = [];
-    for (const command of channel.commands) {
-      this[`${channel.name}`][Object.keys(command)[0]] = new class T extends EventEmitter {
+    for (const command in channel.commands) {
+      this[`${channel.name}`][command] = new class T extends EventEmitter {
         constructor(states) {
           super();
           this.states = states;
@@ -30,8 +30,8 @@ class TwitchEventEmitter {
             }
           });
         }
-      }(command[Object.keys(command)[0]]);
-      this[`${channel.name}`].commands.push(this[`${channel.name}`][Object.keys(command)[0]]);
+      }(channel.commands[command]);
+      this[`${channel.name}`].commands.push(this[`${channel.name}`][command]);
     }
   }
 
