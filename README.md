@@ -5,7 +5,7 @@ const config = {
   channels: [{
     name: 'someChannelName',
     user: 'someUserName',
-    commands: [{
+    commands: {
         heist: [{
             state: 'started',
             regex: /Heist started with (?<someNumber>[0-9]+ participants)/
@@ -16,8 +16,8 @@ const config = {
           }
         ]
       }
-    ]
-  }]
+    }
+  ]
 }
 let events = new TEE(config);
 events.init().then(() => {
